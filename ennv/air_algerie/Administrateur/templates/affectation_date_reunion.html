@@ -1,0 +1,152 @@
+{% extends 'base_admin.html' %} {% load static %} {% block user %} {{user}} {% endblock user %} {% block poste %} {{poste}} {% endblock poste %} {% block body %}
+
+
+<div class="col-md-9 mt-4" style="margin-left: 120px;">
+    <div class="card">
+        <div class="card-header text-center pt-4">
+            <h6 class="mb-0">Fixer la date de la réunion</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+
+
+
+
+                <table id="">
+                    <tbody>
+                        <form action="{% url 'ouvrir' %}" method="POST">
+                            {% csrf_token %}
+                            <tr style="align-center">
+                                <td>
+                                    <select style="margin-left: 220px;" class="bg-light form-control border-0 small w-30" name="unite">
+                                                {% for u in unite %}
+                                                <option value="{{u.id}}">{{u}}</option>
+                                                {% endfor %}
+                                                
+                                            </select>
+
+                                </td>
+                                <td>
+
+                                    <button style="margin-right: 420px;" class="btn bg-gradient-dark m-0" type="submit">Ajouter</button>
+                        </form>
+                        </td>
+                        </tr>
+
+
+
+
+
+
+
+
+                    </tbody>
+
+
+
+                </table>
+
+
+
+
+
+                <tr>
+
+
+
+
+
+                    </tbody>
+                    </table>
+
+            </div>
+        </div>
+
+
+        <div class="card-body px-0 pb-2">
+            <div class="table-responsive">
+
+                <table class="table align-items-center mb-0" id="tableau_pv">
+                    <tbody>
+                        <tr>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Ubite</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Etat</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+
+
+
+                        </tr>
+
+
+                        {% for re in r %}
+
+                        <tr>
+
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{re.unite}}</th>
+                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{re.etat}}</th>
+
+                            <form action="{% url 'fermer' %}" method="POST">
+                                {% csrf_token %}
+                                <td class="align-middle text-center text-sm">
+                                    <button class="btn bg-gradient-danger" type="submit" name="id" value="{{re.id}}">  Modifier &nbsp;<i class=" fas fa-user-edit "></i></button>
+                                </td>
+                            </form>
+
+
+
+
+                        </tr>
+
+
+
+
+                        {% endfor %}
+
+                        <tr>
+
+
+
+                        </tr>
+
+                    </tbody>
+
+
+
+                </table>
+
+
+
+
+
+                <tr>
+
+
+
+
+
+                    </tbody>
+                    </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+
+{% endblock body %}
